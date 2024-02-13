@@ -14,59 +14,120 @@ function addNumbers(){
 };
 
 document.querySelector("#addNumbers").addEventListener("click", addNumbers);
+  
 
+  const addNumBtn = document.querySelector("#addNumbers");
+  addNumBtn.addEventListener("click", addNumbers);
+  
 /* Function Expression - Subtract Numbers */
-function subtract(subtract1, subtract2){
-    return subtract1 - subtract2;
-};
-
-function subtractNumbers(){
-    let subtract1 = Number(document.querySelector("#subtract1").value);
-    let subtract2 = Number(document.querySelector("#subtract2").value);
-   
-    document.querySelector("#difference").value = subtract(subtract1, subtract2);
-};
-
-document.querySelector("#subtractNumbers").subtractEventListener("click", subtractNumbers);
-
+  const subtractFunction = function subtract(number1, number2) {
+    return parseInt(number1) - parseInt(number2);
+  }
+  
+  function subtractNumbers() {
+    let minuend = document.querySelector("#minuend").value;
+    let subtrahend = document.querySelector("#subtrahend").value;
+    let getDiff = document.querySelector("#difference");
+  
+    const diffOfTwo = subtractFunction(minuend, subtrahend);
+  
+    getDiff.value = diffOfTwo;
+  }
+  
+  const subNumBtn = document.querySelector("#subtractNumbers");
+  subNumBtn.addEventListener("click", subtractNumbers);
+  
 /* Arrow Function - Multiply Numbers */
-function multiply(factor1, factor2){
-    return factor1 + factor2;
-};
-
-function multiplyNumbers(){
-    let multiplyFactor1 = Number(document.querySelector("#multiplyFactor1").value);
-    let multiplyFactor2 = Number(document.querySelector("#multiplyFactor2").value);
-   
-    document.querySelector("#product").value = add(multiplyFactor1, multiplyFactor1);
-};
-
-document.querySelector("#multiplyNumbers").multiplyEventListener("click", multiplyNumbers);
-
+  const multiply = (number1, number2) => {
+    return parseFloat(number1) * parseFloat(number2);
+  }
+  
+  const multiplyNumbers = () => {
+    let factor1 = document.querySelector("#factor1").value;
+    let factor2 = document.querySelector("#factor2").value;
+    let getProduct = document.querySelector("#product");
+  
+    const productOfTwo = multiply(factor1, factor2);
+  
+    getProduct.value = productOfTwo;
+  }
+  
+  const multNumBtn = document.querySelector("#multiplyNumbers");
+  multNumBtn.addEventListener("click", multiplyNumbers);
+  
 /* Open Function Use - Divide Numbers */
-const divide = (x, y) => x / y;
+  const divide = (number1, number2) => {
+    return parseFloat(number1) / parseFloat(number2);
+  }
+  
+  const divideNumbers = () => {
+    let dividend = document.querySelector("#dividend").value;
+    let divisor = document.querySelector("#divisor").value;
+    let getQuotient = document.querySelector("#quotient");
+  
+    const quotientOfTwo = divide(dividend, divisor);
+  
+    getQuotient.value = quotientOfTwo;
+  }
+  
+  const quotientNumBtn = document.querySelector("#divideNumbers");
+  quotientNumBtn.addEventListener("click", divideNumbers);
 
-const divideNumbers = () => {
-    let dividend = parseFloat(document.getElementById("dividend").value);
-    let divisor = parseFloat(document.getElementById("divisor").value);
-    let quotient = divide(dividend,divisor);
-    document.getElementById("quotient").value = quotient;
-};
+  
 
-document.getElementById("divideNumbers").addEventListener("click",divideNumbers);
+  const currentDate = new Date();
+
+  let currentYear = null;
+  
+
+  currentYear = currentDate.getFullYear();
+  
+
+  const displayCurrentYear = document.querySelector("#year");
+  
+  displayCurrentYear.innerHTML = currentYear;
+  
 /* Decision Structure */
 
 
 /* ARRAY METHODS - Functional Programming */
 /* Output Source Array */
-let numbersArray = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-/* Output Odds Only Array */
-document.querySelector('#evens').innerHTML= numbersArray.filter(number => number % 2 === 0);
+  let numbersArray = [];
+  for (let i = 1; i <= 25; i++) {
+    numbersArray.push(i);
+  }
+  console.log(numbersArray);
+  
+  // Value of the array variable to the HTML element with an ID of "array"
+  const htmlArray = document.querySelector("#array"); 
+  htmlArray.innerHTML = numbersArray;
+
+  /* Output Odds Only Array */
+  const odds = document.querySelector("#odds");
+  const evens = document.querySelector("#evens");
+  let oddNumbers = []
+  let evenNumbers = []
+  
+  numbersArray.filter((number) => {
+    (number % 2) ? oddNumbers.push(number) : evenNumbers.push(number);
+  })
+  
+  odds.innerHTML = oddNumbers;
+  
 /* Output Evens Only Array */
-document.querySelector('#evens').innerHTML= numbersArray.filter(number => number % 3 === 0);
+  evens.innerHTML = evenNumbers;
+  
 /* Output Sum of Org. Array */
-numbersArray.reduce((sum,number) => sum + number)
+  const sumArray = numbersArray.reduce((num1, num2) => num1 + num2);
+  
+  document.querySelector("#sumOfArray").innerHTML = sumArray;
+  
 /* Output Multiplied by 2 Array */
-numbersArray.map(number => number * 2)
+  const doubleArray = numbersArray.map(num => num * 2);
+  
+  document.querySelector("#multiplied").innerHTML = doubleArray;
+  
 /* Output Sum of Multiplied by 2 Array */
-numbersArray.map(sum,number => number * 2)
+  const sumDoubleArray = doubleArray.reduce((num1, num2) => num1 + num2);
+  
+  document.querySelector("#sumOfMultiplied").innerHTML = sumDoubleArray;
